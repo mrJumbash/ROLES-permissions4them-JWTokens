@@ -5,10 +5,10 @@ from drf_yasg import openapi
 
 schema_view = get_schema_view(
     openapi.Info(
-        title="Manga Read",
+        title="Mango Read",
         default_version="v1",
-        description="Production Manga Read Api",
-        license=openapi.License(name="Naruto License"),
+        description="Happy",
+        license=openapi.License(name="Happy"),
     ),
     public=True,
     permission_classes=(AllowAny,),
