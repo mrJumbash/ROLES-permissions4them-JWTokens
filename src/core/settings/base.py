@@ -22,12 +22,9 @@ LOCAL_APPS = ["common", "service", "accounts"]
 
 THIRD_PARTY_APPS = [
     "rest_framework",
-    "corsheaders",
     "debug_toolbar",
     "django_filters",
-    "health_check",
-    "django_cron",
-]
+ ]
 
 THEME_APPS = [
     "jazzmin",
@@ -84,7 +81,6 @@ LANGUAGE_CODE = "ru-RU"
 
 TIME_ZONE = "Asia/Bishkek"
 
-DATE_FORMAT = "%Y-%m-%d"
 USE_I18N = True
 
 USE_L10N = True
@@ -108,9 +104,11 @@ AUTH_USER_MODEL = 'accounts.User'
 
 REST_FRAMEWORK = {
     "PAGE_SIZE": 13,
-    "DEFAULT_SCHEMA_CLASS": "rest_framework.schemas.coreapi.AutoSchema",
     "DEFAULT_PAGINATION_CLASS": "rest_framework.pagination.LimitOffsetPagination",
     "DEFAULT_FILTER_BACKENDS": ["django_filters.rest_framework.DjangoFilterBackend"],
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    )
 }
 
 

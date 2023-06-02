@@ -1,19 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
-# Create your models here.
-
+from accounts.settings import ROLE_CHOICES
 
 class User(AbstractUser):
-    ADMIN = 1
-    TENANT = 2
-    BUYER = 3
-
-    ROLE_CHOICES = (
-        (ADMIN, 'admin'),
-        (TENANT, 'tenant'),
-        (BUYER, 'buyer')
-    )
-
     role = models.PositiveSmallIntegerField(choices=ROLE_CHOICES, blank=True, null=True)
 
 
