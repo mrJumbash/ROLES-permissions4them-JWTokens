@@ -6,13 +6,20 @@ from rest_framework.exceptions import ValidationError
 
 class RegisterSerializer(serializers.Serializer):
     username = serializers.CharField()
+    email = serializers.EmailField()
     password = serializers.CharField(max_length=16)
 
+    def validate_email(self, email):
+        try:
+            User.objects.get(email=email)
+        except User.DoesNotExist:
+            return email
+        raise ValidationError("User already exists!")
 
     def validate_password(self, password):
-        result = zxcvbn(password)['score']
+        result = zxcvbn(password)["score"]
         if result < 3:
-            raise ValidationError('Use hints for making password!')
+            raise ValidationError("Use hints for making password!")
         return password
 
     def validate_username(self, username):
@@ -20,7 +27,7 @@ class RegisterSerializer(serializers.Serializer):
             User.objects.get(username=username)
         except User.DoesNotExist:
             return username
-        raise ValidationError('User already exists!')
+        raise ValidationError("User already exists!")
 
 
 class ConfirmCodeSerializer(serializers.Serializer):
@@ -31,12 +38,10 @@ class ConfirmCodeSerializer(serializers.Serializer):
         try:
             ConfirmCode.objects.get(id=user_id)
         except ConfirmCode.DoesNotExist:
-            raise ValidationError(f'User with id ({user_id}) not found')
+            raise ValidationError(f"User with id ({user_id}) not found")
         return user_id
-
 
 
 class LoginSerializer(serializers.Serializer):
     username = serializers.CharField()
     password = serializers.CharField()
-

@@ -9,8 +9,7 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("api/v1/", include("accounts.urls")),
     path("api/v1/", include("service.urls")),
-
-    
+    path("social_auth/", include("social_auth.urls")),
 ]
 
 if settings.DEBUG:

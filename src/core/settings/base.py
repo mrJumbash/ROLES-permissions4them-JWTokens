@@ -24,7 +24,7 @@ THIRD_PARTY_APPS = [
     "rest_framework",
     "debug_toolbar",
     "django_filters",
- ]
+]
 
 THEME_APPS = [
     "jazzmin",
@@ -98,17 +98,18 @@ X_FRAME_OPTIONS = "SAMEORIGIN"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-#NEE User Model
-AUTH_USER_MODEL = 'accounts.User'
+# NEw User Model
+AUTH_USER_MODEL = "accounts.User"
 
 
+# rest_framework
 REST_FRAMEWORK = {
     "PAGE_SIZE": 13,
     "DEFAULT_PAGINATION_CLASS": "rest_framework.pagination.LimitOffsetPagination",
     "DEFAULT_FILTER_BACKENDS": ["django_filters.rest_framework.DjangoFilterBackend"],
-    'DEFAULT_AUTHENTICATION_CLASSES': (
-        'rest_framework_simplejwt.authentication.JWTAuthentication',
-    )
+    "DEFAULT_AUTHENTICATION_CLASSES": (
+        "rest_framework_simplejwt.authentication.JWTAuthentication",
+    ),
 }
 
 
