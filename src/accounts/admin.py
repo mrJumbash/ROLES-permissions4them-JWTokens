@@ -1,9 +1,6 @@
 from django.contrib import admin
 from accounts import models
 
-admin.site.register(models.ConfirmCode)
-admin.site.register(models.TenantCode)
-
 
 @admin.register(models.User)
 class UserAdmin(admin.ModelAdmin):

@@ -125,7 +125,7 @@ class LoginAPI(APIView):
 
         user = authenticate(username=username, password=password)
         if user:
-            return UserService.tokens(user=user)
+            return Response(data=UserService.tokens(user=user))
 
         return Response(
             status=status.HTTP_401_UNAUTHORIZED,
